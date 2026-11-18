@@ -41,3 +41,7 @@ Verificación:
 
 ## 6. Reflexión final
 El uso de IA me permitió encontrar nuevas ideas y a su vez ampliar el desarrollo del proyecto.
+
+- **Aprendizaje adquirido:** Consolidé la migración de un sitio estático a una SPA modular en React con TypeScript, aplicando tipado estricto, enrutamiento declarativo con React Router, estado global con Context API y consumo asíncrono de la API de GitHub.
+- **Riesgos de deuda cognitiva:** Comprobé que integrar código sugerido sin revisión genera inconsistencias (como imports cruzados en el contexto del tema o rutas rotas)
+- **Capacidad de defensa:** adapte el proyecto sobre mi propio diseño de la E2, corregí los errores de ejecución y verifiqué cada flujo en el navegador, lo que me permitió comprender parte de la arquitectura del código.
