@@ -1,32 +1,40 @@
-# React + TypeScript + Vite
+# Portafolio Alonso (React + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Migración a React del portafolio de la Evaluación 2. Proyecto Integrado Final, ICINF1107.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+## Ejecutar
+```bash
+npm install
+npm run dev      # servidor de desarrollo
+npm run build    # compila y revisa los tipos
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Tecnologías
+React, TypeScript (sin `any`), Vite y React Router.
+
+## Estructura
+- `src/pages`: una página por ruta (Inicio, Sobre mí, Proyectos, Habilidades, Contacto y 404).
+- `src/components`: piezas reutilizables (Layout, Navbar, Seccion, tarjetas, filtro, campo de formulario).
+- `src/data`: contenido del portafolio, fuera del JSX.
+- `src/hooks`: lógica reutilizable (tema, título de página, filtro, repositorios).
+- `src/services`: acceso a la API.
+- `src/config`: rutas y enlaces del menú.
+- `src/types`: tipos e interfaces exportados.
+
+## Rutas
+`/`, `/sobre-mi`, `/proyectos`, `/habilidades`, `/contacto`. La navegación marca la sección activa, el logo lleva siempre al inicio y cualquier otra dirección muestra una página 404 con enlace de regreso.
+
+## Fidelidad al diseño de la E2
+Se compara con `docs/diseno-e2.jpeg`. Se conservaron las cinco secciones, la jerarquía, las tipografías (Poppins e Inter), los fondos azul marino, el modo claro/oscuro, el filtro de proyectos y el formulario con validación.
+
+Decisiones de mejora:
+- Se añadieron animaciones de entrada y efectos hover para dar más interactividad. Respetan `prefers-reduced-motion`.
+- La navegación pasó de anclas a rutas, por el requisito de React Router.
+- Se añadió una sección de repositorios (API).
+
+## API consumida
+- Endpoint: `GET https://api.github.com/users/AlonsolfDev/repos?sort=updated&per_page=6`
+- Respuesta usada: lista de objetos con `id`, `name`, `description`, `html_url`, `language` y `stargazers_count` (tipo `RepoGitHub`).
+- Elegí este endpoint porque es público, no necesita clave y encaja con un portafolio: los proyectos se muestran con datos reales.
+- Estados: carga (esqueleto), error (mensaje con botón de reintento) y datos. El resultado se guarda en caché para no repetir la petición, y se evitan condiciones de carrera con una bandera en `useEffect`.
+- Límite: 60 peticiones por hora por IP sin autenticación.
