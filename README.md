@@ -1,4 +1,5 @@
 # Portafolio Alonso (React + TypeScript)
+Autor: Alonso Lantaño · Desarrollo de Frontend (ICINF1107)
 
 Migración a React del portafolio de la Evaluación 2. Proyecto Integrado Final, ICINF1107.
 
@@ -25,7 +26,11 @@ React, TypeScript (sin `any`), Vite y React Router.
 `/`, `/sobre-mi`, `/proyectos`, `/habilidades`, `/contacto`. La navegación marca la sección activa, el logo lleva siempre al inicio y cualquier otra dirección muestra una página 404 con enlace de regreso.
 
 ## Fidelidad al diseño de la E2
-Se compara con `docs/diseno-e2.jpeg`. Se conservaron las cinco secciones, la jerarquía, las tipografías (Poppins e Inter), los fondos azul marino, el modo claro/oscuro, el filtro de proyectos y el formulario con validación.
+Captura del portafolio original de la E2, con la que se compara este proyecto:
+
+![Portafolio de la E2](docs/captura-E2.jpeg)
+
+Se conservaron las cinco secciones, la jerarquía, las tipografías (Poppins e Inter), los fondos azul marino, el modo claro/oscuro, el filtro de proyectos y el formulario con validación.
 
 Decisiones de mejora:
 - Se añadieron animaciones de entrada y efectos hover para dar más interactividad. Respetan `prefers-reduced-motion`.
