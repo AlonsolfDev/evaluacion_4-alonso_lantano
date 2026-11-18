@@ -1,0 +1,99 @@
+:root{
+  --fondo:#F5F7FA; --superficie:#FFFFFF; --texto:#0B132B; --suave:#44506B;
+  --acento:#0E7C86; --sobre-acento:#FFFFFF; --borde:#D3DAE6;
+  --titulos:"Poppins",system-ui,sans-serif; --cuerpo:"Inter",system-ui,sans-serif;
+}
+[data-tema="oscuro"]{
+  --fondo:#0B132B; --superficie:#1C2541; --texto:#F5F7FA; --suave:#B4BED3;
+  --acento:#5BC0BE; --sobre-acento:#0B132B; --borde:#2E3A5F;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{margin:0;background:var(--fondo);color:var(--texto);font:400 1rem/1.65 var(--cuerpo)}
+h1,h2,h3{font-family:var(--titulos);line-height:1.2;margin:0 0 .6rem}
+h1{font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.02em}
+h2{font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:1.2rem}
+h3{font-size:1.1rem}
+p{margin:0 0 .8rem;max-width:62ch}
+a{color:var(--acento)}
+:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+.salto{position:absolute;left:1rem;top:-4rem;background:var(--acento);color:var(--sobre-acento);padding:.6rem 1rem;border-radius:6px;z-index:20}
+.salto:focus{top:1rem}
+
+header{position:sticky;top:0;z-index:10;background:var(--fondo);border-bottom:1px solid var(--borde)}
+nav{max-width:68rem;margin:0 auto;padding:.8rem 1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.logo{font:700 1.25rem var(--titulos);text-decoration:none;color:var(--texto);margin-right:auto}
+#nav-menu{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+#nav-menu a{color:var(--texto);text-decoration:none;padding:.3rem 0;border-bottom:2px solid transparent}
+#nav-menu a:hover{border-color:var(--acento)}
+#btn-menu{display:none}
+button{font:500 .95rem var(--cuerpo);cursor:pointer}
+#btn-menu,#btn-tema,.btn-filtro{background:transparent;color:var(--texto);border:1px solid var(--borde);border-radius:999px;padding:.45rem 1rem}
+#btn-menu:hover,#btn-tema:hover,.btn-filtro:hover{border-color:var(--acento)}
+.btn-filtro.activo{background:var(--acento);color:var(--sobre-acento);border-color:var(--acento)}
+
+main{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+section{padding:4.5rem 0 1rem}
+.hero{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;padding-top:5rem}
+.hero img{width:200px;height:200px;border-radius:28px}
+.hero p{color:var(--suave);font-size:1.15rem}
+.intro{color:var(--suave)}
+.boton{display:inline-block;background:var(--acento);color:var(--sobre-acento);border:0;border-radius:8px;padding:.75rem 1.4rem;font:600 1rem var(--titulos);text-decoration:none;cursor:pointer;margin-top:.6rem}
+.boton:hover{filter:brightness(1.08)}
+
+.linea-tiempo{border-left:3px solid var(--acento);padding-left:1.6rem;display:grid;gap:1.6rem;margin-top:1.4rem}
+.linea-tiempo article{position:relative}
+.linea-tiempo article::before{content:"";position:absolute;left:calc(-1.6rem - 9px);top:.45rem;width:15px;height:15px;border-radius:50%;background:var(--fondo);border:3px solid var(--acento)}
+
+.filtros{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.2rem}
+.rejilla article{background:var(--superficie);border:1px solid var(--borde);border-radius:12px;padding:1.3rem}
+.proyecto[hidden]{display:none}
+.tec{color:var(--acento);font-weight:500;margin:0}
+
+form{max-width:34rem}
+.campo{margin-bottom:1.1rem;display:flex;flex-direction:column;gap:.35rem}
+label{font-weight:500}
+input,textarea{font:inherit;color:var(--texto);background:var(--superficie);border:1px solid var(--suave);border-radius:8px;padding:.7rem .85rem}
+input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:#C62828;border-width:2px}
+.error{color:#C62828;font-size:.9rem;min-height:1.2em}
+[data-tema="oscuro"] .error{color:#FF8A80}
+#mensaje-exito{margin-top:1rem;padding:.8rem 1rem;border-left:4px solid var(--acento);background:var(--superficie)}
+
+footer{max-width:68rem;margin:4rem auto 0;padding:1.5rem 1.25rem;border-top:1px solid var(--borde);color:var(--suave)}
+
+@media (max-width:48rem){
+  #btn-menu{display:inline-block}
+  #nav-menu{display:none;flex-direction:column;gap:.4rem;width:100%;order:5;padding:.6rem 0}
+  #nav-menu.abierto{display:flex}
+  .hero{grid-template-columns:1fr;gap:1.6rem}
+  .hero img{width:120px;height:120px;order:-1}
+  section{padding-top:3.2rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+#nav-menu a.active{border-color:var(--acento)}
+
+.rejilla article{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.rejilla article:hover{transform:translateY(-4px);border-color:var(--acento);box-shadow:0 8px 24px rgb(0 0 0 / .12)}
+.pagina,.hero{animation:entrada .45s ease both}
+@keyframes entrada{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+.rejilla article,.boton,.btn-filtro{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+#nav-menu a{transition:border-color .25s ease,color .25s ease}
+#nav-menu a:hover,#nav-menu a.active{color:var(--acento)}
+.pagina,.hero{animation:entrada .45s ease both}
+.rejilla article{animation:entrada .5s ease backwards}
+.rejilla article:nth-child(2){animation-delay:.08s}
+.rejilla article:nth-child(3){animation-delay:.16s}
+.rejilla article:nth-child(4){animation-delay:.24s}
+@keyframes entrada{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rejilla article:hover{transform:translateY(-6px);border-color:var(--acento);box-shadow:0 12px 28px color-mix(in srgb,var(--acento) 22%,transparent)}
+.boton:hover{transform:translateY(-2px);box-shadow:0 6px 18px color-mix(in srgb,var(--acento) 35%,transparent)}
+.btn-filtro:hover{transform:translateY(-2px)}
+.boton:active,.btn-filtro:active{transform:scale(.97)}
+.hero img{box-shadow:0 0 0 6px color-mix(in srgb,var(--acento) 25%,transparent),0 16px 40px color-mix(in srgb,var(--acento) 30%,transparent);animation:flotar 5s ease-in-out infinite}
+@keyframes flotar{50%{translate:0 -8px}}
+.linea-tiempo article::before{transition:transform .25s ease,background .25s ease}
+.linea-tiempo article:hover::before{transform:scale(1.35);background:var(--acento)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
