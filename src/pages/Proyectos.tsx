@@ -1,5 +1,6 @@
 import FiltroProyectos from '../components/FiltroProyectos'
 import ProyectoCard from '../components/ProyectoCard'
+import Repositorios from '../components/Repositorios'
 import Seccion from '../components/Seccion'
 import { proyectos } from '../data/proyectos'
 import { useFiltroProyectos } from '../hooks/useFiltroProyectos'
@@ -18,6 +19,8 @@ export default function Proyectos() {
           <ProyectoCard key={p.id} proyecto={p} />
         ))}
       </div>
+      <h3 className="subtitulo">Mis repositorios en GitHub</h3>
+      <Repositorios />
     </Seccion>
   )
 }

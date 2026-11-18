@@ -18,3 +18,19 @@ export interface EnlaceNav {
   to: string
   texto: string
 }
+export interface CamposContacto {
+  nombre: string
+  correo: string
+  mensaje: string
+}
+
+export type ErroresContacto = Record<keyof CamposContacto, string>
+
+export interface RepoGitHub {
+  id: number
+  name: string
+  description: string | null
+  html_url: string
+  language: string | null
+  stargazers_count: number
+}
