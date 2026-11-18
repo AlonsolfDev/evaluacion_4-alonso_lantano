@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ENLACES } from '../config/rutas'
-import { useTema } from '../hooks/useTema'
+import { useTemaGlobal } from '../hooks/useTemaGlobal'
 
 export default function Navbar() {
   const [abierto, setAbierto] = useState(false)
-  const { tema, alternar } = useTema()
+  const { tema, alternar } = useTemaGlobal()
   const oscuro = tema === 'oscuro'
 
   return (
